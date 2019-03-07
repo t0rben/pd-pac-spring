@@ -1,10 +1,15 @@
 package com.prodyna.pac.dialogue.service;
 
+import com.prodyna.pac.dialogue.annotation.CustomLogger;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BusinessService {
+
+    @CustomLogger
+    private Logger logger;
 
     @Autowired
     private PrototypeScopedService prototypeScopedService;
@@ -19,6 +24,8 @@ public class BusinessService {
     private ServiceA serviceA;
 
     public void run() {
+
+        logger.trace("In Business");
 
         prototypeScopedService.run();
         requestScopedService.run();

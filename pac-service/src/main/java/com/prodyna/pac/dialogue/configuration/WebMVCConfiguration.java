@@ -13,11 +13,13 @@ public class WebMVCConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
+
         registry.addConverter(new StringToAccountDTOConverter());
     }
 
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+
         configurer.favorPathExtension(false);
     }
 
@@ -28,8 +30,8 @@ public class WebMVCConfiguration implements WebMvcConfigurer {
 
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
+
         configurer.setUseSuffixPatternMatch(false);
     }
-
 
 }
