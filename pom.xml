@@ -12,9 +12,7 @@
 
     <modules>
         <module>pac-service</module>
-        <module>pac-autoconfiguration</module>
         <module>pac-model</module>
-        <module>pac-api</module>
     </modules>
 
 
