@@ -1,5 +1,7 @@
 package com.prodyna.pac.dialogue.controller;
 
+import com.prodyna.pac.dialogue.annotation.LogExecutionTime;
+import com.prodyna.pac.dialogue.annotation.SecureBasicAuth;
 import com.prodyna.pac.dialogue.service.BusinessService;
 import com.prodyna.pac.dialogue.service.PrototypeScopedService;
 import com.prodyna.pac.dialogue.service.RequestScopedService;
@@ -9,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +33,7 @@ public class AccountController {
     @Autowired
     private BusinessService businessService;
 
+    @LogExecutionTime
     @PutMapping(path = "/account/{accountDTO}")
     public ResponseEntity<AccountDTO> updateAccount(@PathVariable AccountDTO accountDTO) {
 
@@ -42,6 +46,13 @@ public class AccountController {
         businessService.run();
 
         return ResponseEntity.ok(accountDTO);
+    }
+
+    @SecureBasicAuth
+    @GetMapping(path = "/api/secure")
+    public ResponseEntity<Void> verySecure() {
+
+        return ResponseEntity.ok().build();
     }
 
 }

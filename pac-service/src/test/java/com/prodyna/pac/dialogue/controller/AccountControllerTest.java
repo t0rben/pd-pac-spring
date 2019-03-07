@@ -1,5 +1,6 @@
 package com.prodyna.pac.dialogue.controller;
 
+import com.prodyna.pac.dialogue.configuration.AspectConfiguration;
 import com.prodyna.pac.dialogue.configuration.WebMVCConfiguration;
 import com.prodyna.pac.dialogue.service.BusinessService;
 import com.prodyna.pac.dialogue.service.PrototypeScopedService;
@@ -9,7 +10,10 @@ import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureWebMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -18,9 +22,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers = AccountController.class)
-@Import(WebMVCConfiguration.class)
+@SpringBootTest
 @MockBean(classes = {BusinessService.class, PrototypeScopedService.class, RequestScopedService.class, SessionScopedService.class})
+@AutoConfigureWebMvc
+@AutoConfigureMockMvc
 public class AccountControllerTest {
 
     @Autowired
@@ -34,5 +39,14 @@ public class AccountControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.accountOperation", Matchers.is("DEPOSIT")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.amount", Matchers.is(0.002123123)));
 
+    }
+
+    @Test
+    public void secureEndpoint() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/secure"))
+                .andExpect(MockMvcResultMatchers.status().isUnauthorized());
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/secure").header("Authorization", "Basic VG9yYmVuOkJvY2s="))
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 }
