@@ -18,24 +18,22 @@
 ## Common Part Implementation
 - Implementation Rest Controller against strange URL
     - part1
-- WebMVC Configuration for Content Negotation & DataBinder
+- WebMVC Configuration for Content Negotation & DataBinder & Reflections
     - part2
-- Reflections
-    - part3
 - Bean Lifecycles & Bean Scopes & Lazy Beans
-    - part4
+    - part3
 - StereoTypes
-    - part5
+    - part4
 - Aspects
-    - part6
+    - part5
     - Logging
     - BasicAuthImplementation
 - Autoconfiguration
-    - part7
+    - part6
     - DependsOn
     - Autoconfig Setup
 - Spring Actuator
-    - part8
+    - part7
     - HealthCheck
 
 ## Presentations and Tasks
