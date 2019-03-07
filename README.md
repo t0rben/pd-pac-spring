@@ -26,7 +26,7 @@
     - part4
 - StereoTypes
     - part5
-- Aspecte
+- Aspects
     - part6
     - Logging
     - BasicAuthImplementation
