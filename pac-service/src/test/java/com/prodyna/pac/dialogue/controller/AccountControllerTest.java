@@ -1,11 +1,16 @@
 package com.prodyna.pac.dialogue.controller;
 
 import com.prodyna.pac.dialogue.configuration.WebMVCConfiguration;
+import com.prodyna.pac.dialogue.service.BusinessService;
+import com.prodyna.pac.dialogue.service.PrototypeScopedService;
+import com.prodyna.pac.dialogue.service.RequestScopedService;
+import com.prodyna.pac.dialogue.service.SessionScopedService;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -15,6 +20,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = AccountController.class)
 @Import(WebMVCConfiguration.class)
+@MockBean(classes = {BusinessService.class, PrototypeScopedService.class, RequestScopedService.class, SessionScopedService.class})
 public class AccountControllerTest {
 
     @Autowired
