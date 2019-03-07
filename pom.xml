@@ -11,13 +11,17 @@
 	</parent>
 
 	<modules>
-		<module>spring-service</module>
-	</modules>
+		<module>pac-service</module>
+		<module>pac-autoconfiguration</module>
+        <module>pac-model</module>
+        <module>pac-api</module>
+    </modules>
 
 
 	<groupId>com.prodyna.pac</groupId>
-	<artifactId>spring</artifactId>
+	<artifactId>pac</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<name>pac</name>
     <packaging>pom</packaging>
 
 
