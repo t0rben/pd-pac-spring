@@ -1,7 +1,5 @@
 package com.prodyna.pac.dialogue.controller;
 
-import com.prodyna.pac.dialogue.configuration.AspectConfiguration;
-import com.prodyna.pac.dialogue.configuration.WebMVCConfiguration;
 import com.prodyna.pac.dialogue.service.BusinessService;
 import com.prodyna.pac.dialogue.service.PrototypeScopedService;
 import com.prodyna.pac.dialogue.service.RequestScopedService;
@@ -12,10 +10,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureWebMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -43,6 +39,7 @@ public class AccountControllerTest {
 
     @Test
     public void secureEndpoint() throws Exception {
+
         mockMvc.perform(MockMvcRequestBuilders.get("/api/secure"))
                 .andExpect(MockMvcResultMatchers.status().isUnauthorized());
 

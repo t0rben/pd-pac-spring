@@ -11,6 +11,7 @@
     </parent>
 
     <modules>
+        <module>pac-autoconfiguration</module>
         <module>pac-service</module>
         <module>pac-model</module>
     </modules>
