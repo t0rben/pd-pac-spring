@@ -23,7 +23,7 @@ public class AccountControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.put("/account/DEPOSITz0.002123123"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.accountOperation", Matchers.is("DEPOSIT")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.amount", Matchers.is("0.002123123")));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.amount", Matchers.is(0.002123123)));
 
     }
 }
